@@ -1,0 +1,14 @@
+package org.cadian.reflections.org;
+
+import org.cadian.reflections.ReflectionsUtil;
+
+import junit.framework.Assert;
+
+public class ReflectionsUtilTest {
+
+	@Test
+	public void test() {
+		Assert.assertNotNull(ReflectionsUtil.getSubTypesOf(Object.class));
+	}
+	
+}
