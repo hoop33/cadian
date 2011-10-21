@@ -3,6 +3,7 @@ package org.cadian.extensions.core;
 import junit.framework.Assert;
 
 import org.cadian.extensions.annotation.Extension;
+import org.cadian.extensions.annotation.MockExtension;
 import org.cadian.extensions.query.ExactMatchQuery;
 import org.cadian.extensions.query.ExtensionQueryException;
 import org.junit.Before;
@@ -19,7 +20,6 @@ public class ExtensionStoreTest {
 	@Before
 	public void init() {
 		store = new ExtensionStore<I>(I.class);
-		store.init();
 	}
 	
 	@Test
@@ -42,11 +42,21 @@ public class ExtensionStoreTest {
 		Assert.assertEquals(A.class, store.execute(new ExactMatchQuery<I>(I.class, "x", "y")));
 	}
 	
-	private interface I {}
+	@Test
+	public void testGetMock() throws ExtensionQueryException {
+		Assert.assertEquals(MockD.class, store.execute(new ExactMatchQuery<I>(I.class, "c", "z")));
+	}
+	
+	protected interface I {}
 	@Extension
 	private class A implements I {}
 	@Extension(queryStrings="z")
 	private class B implements I {}
 	@Extension(queryStrings={"a", "b"})
 	private class C extends B {}
+	@SuppressWarnings("unused")
+	@Extension(queryStrings={"c", "z"})
+	private class D extends C {}
+	@MockExtension(extension=@Extension(queryStrings={"c", "z"}))
+	private class MockD extends C {}
 }

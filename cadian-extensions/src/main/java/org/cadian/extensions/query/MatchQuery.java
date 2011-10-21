@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 import org.cadian.extensions.core.ExtensionKey;
+import org.cadian.extensions.core.ExtensionPointKey;
 
 /**
  * An ExtensionQuery that finds the "best" match in the map for
@@ -13,7 +14,7 @@ import org.cadian.extensions.core.ExtensionKey;
  */
 public abstract class MatchQuery<T> implements ExtensionQuery<T> {
 	private static final long serialVersionUID = 1L;
-	private final Class<T> extensionPoint;
+	private final ExtensionPointKey extensionPointKey;
 	private final String[] queryStrings;
 	private final boolean fallbackToDefault;
 
@@ -33,7 +34,7 @@ public abstract class MatchQuery<T> implements ExtensionQuery<T> {
 	 * @param queryStrings The Query Strings
 	 */
 	public MatchQuery(Class<T> extensionPoint, boolean fallbackToDefault, String... queryStrings) {
-		this.extensionPoint = extensionPoint;
+		this.extensionPointKey = new ExtensionPointKey(extensionPoint);
 		this.fallbackToDefault = fallbackToDefault;
 		this.queryStrings = queryStrings;
 	}
@@ -55,8 +56,8 @@ public abstract class MatchQuery<T> implements ExtensionQuery<T> {
 	/**
 	 * {@inheritDoc}
 	 */
-	public Class<T> getExtensionPoint() {
-		return extensionPoint;
+	public ExtensionPointKey getExtensionPointKey() {
+		return extensionPointKey;
 	}
 	
 	/**

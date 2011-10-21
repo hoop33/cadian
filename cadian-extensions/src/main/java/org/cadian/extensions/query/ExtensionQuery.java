@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Map;
 
 import org.cadian.extensions.core.ExtensionKey;
+import org.cadian.extensions.core.ExtensionPointKey;
 
 /**
  * An ExtensionQuery is used to 
@@ -23,5 +24,5 @@ public interface ExtensionQuery<T> extends Serializable {
 	 * Get the ExtensionPoint.
 	 * @return The Extension Point
 	 */
-	public Class<T> getExtensionPoint();
+	public ExtensionPointKey getExtensionPointKey();
 }
