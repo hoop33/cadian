@@ -28,3 +28,6 @@ Global preferences with built in class hierarchy searching.
 
 Reflections
 Interface to org.reflections classpath scanner.
+
+Examples
+Examples of how to use the Cadian framework.
