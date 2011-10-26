@@ -138,6 +138,18 @@ public class Extensions implements Serializable {
 	}
 	
 	/**
+	 * Tell Extensions whether or not to use MockExtensions.
+	 * @param injectMocks Inject Mocks or Not
+	 */
+	public static void injectMocks(boolean injectMocks) {
+		if(injectMocks) {
+			System.setProperty("org.cadian.ExtensionStore.mock", "true");
+		} else {
+			System.setProperty("org.cadian.ExtensionStore.mock", "false");
+		}
+	}
+	
+	/**
 	 * Singleton enumeration.
 	 * 
 	 * @author Joshua Hornsby

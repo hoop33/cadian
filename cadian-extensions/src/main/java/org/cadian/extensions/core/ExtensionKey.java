@@ -1,7 +1,9 @@
 package org.cadian.extensions.core;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * A key that is used to identify an class annotated with the Extension annotation.
@@ -17,7 +19,7 @@ public final class ExtensionKey implements Serializable {
 	 * @param queryStrings The Query Strings
 	 */
 	public ExtensionKey(String... queryStrings) {
-		this.queryStrings = queryStrings;
+		this.queryStrings = filterNulls(queryStrings);
 		Arrays.sort(this.queryStrings);
 	}
 	
@@ -57,8 +59,18 @@ public final class ExtensionKey implements Serializable {
 		return true;
 	}
 	
+	private static String[] filterNulls(String[] strings) {
+		List<String> result = new ArrayList<String>();
+		for(String s : strings) {
+			if(s != null) {
+				result.add(s);
+			}
+		}
+		return result.toArray(new String[]{});
+	}
+	
 	/**
 	 * The empty key.
 	 */
-	public static final ExtensionKey DEFAULT_BASE = new ExtensionKey(); 
+	public static final ExtensionKey DEFAULT_BASE = new ExtensionKey();
 }
