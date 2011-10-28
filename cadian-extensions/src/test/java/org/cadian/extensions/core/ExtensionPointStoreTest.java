@@ -4,7 +4,6 @@ import junit.framework.Assert;
 
 import org.cadian.extensions.annotation.Extension;
 import org.cadian.extensions.annotation.ExtensionPoint;
-import org.cadian.extensions.core.util.CreateInstanceException;
 import org.cadian.extensions.query.ExactMatchQuery;
 import org.cadian.extensions.query.ExtensionQueryException;
 import org.cadian.extensions.query.SimplePartialMatchQuery;
@@ -25,32 +24,32 @@ public class ExtensionPointStoreTest {
 	}
 	
 	@Test
-	public void testGetBaseClass() throws ExtensionQueryException {
+	public void testGetBaseClass() {
 		Assert.assertEquals(Hydrogen.class, store.getClassFor(new SimplePartialMatchQuery<Element>(Element.class)));
 	}
 	
 	@Test
-	public void testGetPartialMatchClass() throws ExtensionQueryException {
+	public void testGetPartialMatchClass() {
 		Assert.assertEquals(Carbon.class, store.getClassFor(new SimplePartialMatchQuery<Element>(Element.class, "delicious ice cream")));
 	}
 	
 	@Test
-	public void testGetBaseInstance() throws ExtensionQueryException, CreateInstanceException {
+	public void testGetBaseInstance() {
 		Assert.assertEquals("Hydrogen", store.getInstanceFor(new SimplePartialMatchQuery<Element>(Element.class)).getName());
 	}
 	
 	@Test
-	public void testGetSingletonInstance() throws ExtensionQueryException, CreateInstanceException {
+	public void testGetSingletonInstance() {
 		Assert.assertEquals("Carbon", store.getInstanceFor(new SimplePartialMatchQuery<Element>(Element.class, "people", "delicious ice cream")).getName());
 	}
 	
 	@Test
-	public void testGetInstanceWithConstructorArgs() throws ExtensionQueryException, CreateInstanceException {
+	public void testGetInstanceWithConstructorArgs() {
 		Assert.assertEquals("Hello :)", store.getInstanceFor(new SimplePartialMatchQuery<Element>(Element.class, "balloons", "silly voices"), "Hello :)").getName());
 	}
 	
 	@Test(expected=ExtensionQueryException.class)
-	public void testThatWeGetAnExceptionIfWeQueryForANonExistantExtensionPoint() throws ExtensionQueryException {
+	public void testThatWeGetAnExceptionIfWeQueryForANonExistantExtensionPoint() {
 		store.getClassFor(new ExactMatchQuery<Helium>(Helium.class));
 	}
 	

@@ -9,7 +9,6 @@ import java.util.Set;
 import org.cadian.extensions.annotation.Extension;
 import org.cadian.extensions.annotation.MockExtension;
 import org.cadian.extensions.query.ExtensionQuery;
-import org.cadian.extensions.query.ExtensionQueryException;
 import org.cadian.reflections.ReflectionsUtil;
 
 /**
@@ -61,9 +60,8 @@ public class ExtensionStore<T> implements Serializable {
 	 * Execute a query against this extension store.
 	 * @param query The Query to Execute
 	 * @return The Result
-	 * @throws ExtensionQueryException If there is a problem executing the query
 	 */
-	public Class<? extends T> execute(ExtensionQuery<T> query) throws ExtensionQueryException {
+	public Class<? extends T> execute(ExtensionQuery<T> query) {
 		return query.execute(store);
 	}
 	

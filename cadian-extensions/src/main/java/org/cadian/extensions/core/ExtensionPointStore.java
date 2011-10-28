@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.cadian.extensions.annotation.ExtensionPoint;
-import org.cadian.extensions.core.util.CreateInstanceException;
 import org.cadian.extensions.core.util.InstanceUtil;
 import org.cadian.extensions.query.ExtensionQuery;
 import org.cadian.extensions.query.ExtensionQueryException;
@@ -49,10 +48,9 @@ public class ExtensionPointStore implements Serializable {
 	 * Get the Class that matches the given query.
 	 * @param query The Query
 	 * @return The Class
-	 * @throws ExtensionQueryException If there was a problem executing the query.
 	 */
 	@SuppressWarnings("unchecked")
-	public <T> Class<? extends T> getClassFor(ExtensionQuery<T> query) throws ExtensionQueryException {
+	public <T> Class<? extends T> getClassFor(ExtensionQuery<T> query) {
 		if(store.containsKey(query.getExtensionPointKey())) {
 			return ((ExtensionStore<T>)store.get(query.getExtensionPointKey())).execute(query);
 		} else {
@@ -64,10 +62,8 @@ public class ExtensionPointStore implements Serializable {
 	 * Get an instance of the Class that matches the given query.
 	 * @param query The Query
 	 * @return The Instance
-	 * @throws ExtensionQueryException If there was a problem executing the query.
-	 * @throws CreateInstanceException If there was a problem creating the instance.
 	 */
-	public <T> T getInstanceFor(ExtensionQuery<T> query) throws ExtensionQueryException, CreateInstanceException {
+	public <T> T getInstanceFor(ExtensionQuery<T> query) {
 		return InstanceUtil.newInstance(getClassFor(query));
 	}
 	
@@ -76,10 +72,8 @@ public class ExtensionPointStore implements Serializable {
 	 * @param query The Query
 	 * @param args The Arguments
 	 * @return The Instance
-	 * @throws ExtensionQueryException If there was a problem executing the query.
-	 * @throws CreateInstanceException If there was a problem creating the instance.
 	 */
-	public <T> T getInstanceFor(ExtensionQuery<T> query, Object... args) throws ExtensionQueryException, CreateInstanceException {
+	public <T> T getInstanceFor(ExtensionQuery<T> query, Object... args) {
 		return InstanceUtil.newInstance(getClassFor(query), args);
 	}
 	

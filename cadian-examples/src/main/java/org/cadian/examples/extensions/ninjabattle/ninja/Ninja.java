@@ -3,8 +3,6 @@ package org.cadian.examples.extensions.ninjabattle.ninja;
 import org.cadian.examples.extensions.ninjabattle.attack.Attack;
 import org.cadian.examples.extensions.ninjabattle.skillset.SkillSet;
 import org.cadian.extensions.core.Extensions;
-import org.cadian.extensions.core.util.CreateInstanceException;
-import org.cadian.extensions.query.ExtensionQueryException;
 
 /**
  * A Ninja.
@@ -23,12 +21,7 @@ public class Ninja {
 	}
 	
 	public Attack attack() {
-		try {
-			return getSkillSet().getRandomAttack();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
+		return getSkillSet().getRandomAttack();
 	}
 	
 	public void getAttacked(Attack attack) {
@@ -47,7 +40,7 @@ public class Ninja {
 		return life;
 	}
 
-	private SkillSet getSkillSet() throws ExtensionQueryException, CreateInstanceException {
+	private SkillSet getSkillSet() {
 		return Extensions.getBestInstanceFor(SkillSet.class, skillLevel);
 	}
 }

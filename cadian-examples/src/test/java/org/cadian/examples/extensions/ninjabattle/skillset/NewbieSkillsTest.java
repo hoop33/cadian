@@ -6,8 +6,6 @@ import org.cadian.examples.extensions.ninjabattle.attack.Kick;
 import org.cadian.examples.extensions.ninjabattle.attack.Punch;
 import org.cadian.examples.extensions.ninjabattle.attack.SwordSlash;
 import org.cadian.examples.extensions.ninjabattle.util.MockRandomUtilImpl;
-import org.cadian.extensions.core.util.CreateInstanceException;
-import org.cadian.extensions.query.ExtensionQueryException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,7 +24,7 @@ public class NewbieSkillsTest {
 	}
 	
 	@Test
-	public void testKick() throws ExtensionQueryException, CreateInstanceException {
+	public void testKick() {
 		MockRandomUtilImpl.RANDOM_DOUBLE.set(0.0);
 		Assert.assertEquals(Kick.class, skills.getRandomAttack().getClass());
 		MockRandomUtilImpl.RANDOM_DOUBLE.set(0.119999);
@@ -34,7 +32,7 @@ public class NewbieSkillsTest {
 	}
 	
 	@Test
-	public void testPunch() throws ExtensionQueryException, CreateInstanceException {
+	public void testPunch() {
 		MockRandomUtilImpl.RANDOM_DOUBLE.set(0.12);
 		Assert.assertEquals(Punch.class, skills.getRandomAttack().getClass());
 		MockRandomUtilImpl.RANDOM_DOUBLE.set(0.839999);
@@ -42,7 +40,7 @@ public class NewbieSkillsTest {
 	}
 	
 	@Test
-	public void testSwordSlash() throws ExtensionQueryException, CreateInstanceException {
+	public void testSwordSlash() {
 		MockRandomUtilImpl.RANDOM_DOUBLE.set(0.84);
 		Assert.assertEquals(SwordSlash.class, skills.getRandomAttack().getClass());
 		MockRandomUtilImpl.RANDOM_DOUBLE.set(1.00);

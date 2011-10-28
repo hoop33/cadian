@@ -42,7 +42,7 @@ public abstract class MatchQuery<T> implements ExtensionQuery<T> {
 	/**
 	 * {@inheritDoc}
 	 */
-	public Class<? extends T> execute(Map<ExtensionKey, Class<? extends T>> map) throws ExtensionQueryException {
+	public Class<? extends T> execute(Map<ExtensionKey, Class<? extends T>> map) {
 		Class<? extends T> result = getBestMatch(map, new ExtensionKey(getQueryStrings()));
 		if(result == null) {
 			result = getBaseImplementation(map);

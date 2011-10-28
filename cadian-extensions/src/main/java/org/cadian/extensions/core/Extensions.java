@@ -2,10 +2,8 @@ package org.cadian.extensions.core;
 
 import java.io.Serializable;
 
-import org.cadian.extensions.core.util.CreateInstanceException;
 import org.cadian.extensions.query.ExactMatchQuery;
 import org.cadian.extensions.query.ExtensionQuery;
-import org.cadian.extensions.query.ExtensionQueryException;
 import org.cadian.extensions.query.SimplePartialMatchQuery;
 
 /**
@@ -20,9 +18,8 @@ public class Extensions implements Serializable {
 	 * Get the Class that matches the query.
 	 * @param query The Query
 	 * @return The Class
-	 * @throws ExtensionQueryException If there was a problem executing the query.
 	 */
-	public static <T> Class<? extends T> getClassFor(ExtensionQuery<T> query) throws ExtensionQueryException {
+	public static <T> Class<? extends T> getClassFor(ExtensionQuery<T> query) {
 		return Instance.INSTANCE.get().getClassFor(query);
 	}
 	
@@ -30,10 +27,8 @@ public class Extensions implements Serializable {
 	 * Get an instance of the Class that matches the query.
 	 * @param query The Query
 	 * @return The Instance
-	 * @throws ExtensionQueryException If there was a problem executing the query.
-	 * @throws CreateInstanceException
 	 */
-	public static <T> T getInstanceFor(ExtensionQuery<T> query) throws ExtensionQueryException, CreateInstanceException {
+	public static <T> T getInstanceFor(ExtensionQuery<T> query) {
 		return Instance.INSTANCE.get().getInstanceFor(query);
 	}
 	
@@ -42,10 +37,8 @@ public class Extensions implements Serializable {
 	 * @param query The Query
 	 * @param args The Arguments
 	 * @return The Instance
-	 * @throws ExtensionQueryException If there was a problem executing the query.
-	 * @throws CreateInstanceException If there was a problem creating the instance.
 	 */
-	public static <T> T getInstanceFor(ExtensionQuery<T> query, Object... args) throws ExtensionQueryException, CreateInstanceException {
+	public static <T> T getInstanceFor(ExtensionQuery<T> query, Object... args) {
 		return Instance.INSTANCE.get().getInstanceFor(query, args);
 	}
 	
@@ -54,9 +47,8 @@ public class Extensions implements Serializable {
 	 * @param extensionPoint The Extension Point
 	 * @param queryStrings The Query Strings
 	 * @return The Class
-	 * @throws ExtensionQueryException If there was a problem executing the query.
 	 */
-	public static <T> Class<? extends T> getExactClassFor(Class<T> extensionPoint, String... queryStrings) throws ExtensionQueryException {
+	public static <T> Class<? extends T> getExactClassFor(Class<T> extensionPoint, String... queryStrings) {
 		return getClassFor(new ExactMatchQuery<T>(extensionPoint, queryStrings));
 	}
 	
@@ -65,10 +57,8 @@ public class Extensions implements Serializable {
 	 * @param extensionPoint The Extension Point
 	 * @param queryStrings The Query String
 	 * @return The Instance
-	 * @throws ExtensionQueryException If there was a problem executing the query.
-	 * @throws CreateInstanceException If there was a problem creating the instance.
 	 */
-	public static <T> T getExactInstanceFor(Class<T> extensionPoint, String... queryStrings) throws ExtensionQueryException, CreateInstanceException {
+	public static <T> T getExactInstanceFor(Class<T> extensionPoint, String... queryStrings) {
 		return getInstanceFor(new ExactMatchQuery<T>(extensionPoint, queryStrings));
 	}
 	
@@ -78,10 +68,8 @@ public class Extensions implements Serializable {
 	 * @param args The Arguments
 	 * @param queryStrings The Query Strings
 	 * @return The Instance
-	 * @throws ExtensionQueryException If there was a problem executing the query.
-	 * @throws CreateInstanceException If there was a problem creating the instance.
 	 */
-	public static <T> T getExactInstanceFor(Class<T> extensionPoint, Object[] args, String... queryStrings) throws ExtensionQueryException, CreateInstanceException {
+	public static <T> T getExactInstanceFor(Class<T> extensionPoint, Object[] args, String... queryStrings) {
 		return getInstanceFor(new ExactMatchQuery<T>(extensionPoint, queryStrings), args);
 	}
 	
@@ -90,9 +78,8 @@ public class Extensions implements Serializable {
 	 * @param extensionPoint The Extension Point
 	 * @param queryStrings The Query Strings
 	 * @return The Instance
-	 * @throws ExtensionQueryException If there was a problem executing the query.
 	 */
-	public static <T> Class<? extends T> getBestClassFor(Class<T> extensionPoint, String... queryStrings) throws ExtensionQueryException {
+	public static <T> Class<? extends T> getBestClassFor(Class<T> extensionPoint, String... queryStrings) {
 		return getClassFor(new SimplePartialMatchQuery<T>(extensionPoint, queryStrings));
 	}
 	
@@ -101,10 +88,8 @@ public class Extensions implements Serializable {
 	 * @param extensionPoint The Extension Point
 	 * @param queryStrings The Query Strings
 	 * @return The Instance
-	 * @throws ExtensionQueryException If there was a problem executing the query.
-	 * @throws CreateInstanceException If there was a problem creating the instance.
 	 */
-	public static <T> T getBestInstanceFor(Class<T> extensionPoint, String... queryStrings) throws ExtensionQueryException, CreateInstanceException {
+	public static <T> T getBestInstanceFor(Class<T> extensionPoint, String... queryStrings) {
 		return getInstanceFor(new SimplePartialMatchQuery<T>(extensionPoint, queryStrings));
 	}
 	
@@ -115,10 +100,8 @@ public class Extensions implements Serializable {
 	 * @param args The Arguments
 	 * @param queryStrings The Query Strings
 	 * @return The Instance
-	 * @throws ExtensionQueryException If there was a problem executing the query.
-	 * @throws CreateInstanceException If there was a problem creating the instance.
 	 */
-	public static <T> T getBestInstanceFor(Class<T> extensionPoint, Object[] args, String... queryStrings) throws ExtensionQueryException, CreateInstanceException {
+	public static <T> T getBestInstanceFor(Class<T> extensionPoint, Object[] args, String... queryStrings) {
 		return getInstanceFor(new SimplePartialMatchQuery<T>(extensionPoint, queryStrings), args);
 	}
 	

@@ -5,7 +5,7 @@ package org.cadian.extensions.query;
  * 
  * @author Joshua Hornsby
  */
-public class ExtensionQueryException extends Exception {
+public class ExtensionQueryException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 
 	/**

@@ -5,7 +5,6 @@ import junit.framework.Assert;
 import org.cadian.extensions.annotation.Extension;
 import org.cadian.extensions.annotation.MockExtension;
 import org.cadian.extensions.query.ExactMatchQuery;
-import org.cadian.extensions.query.ExtensionQueryException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,27 +23,27 @@ public class ExtensionStoreTest {
 	}
 	
 	@Test
-	public void testDirectSubType() throws ExtensionQueryException {
+	public void testDirectSubType() {
 		Assert.assertEquals(A.class, store.execute(new ExactMatchQuery<I>(I.class)));
 	}
 	
 	@Test
-	public void testAnotherDirectSubType() throws ExtensionQueryException {
+	public void testAnotherDirectSubType() {
 		Assert.assertEquals(B.class, store.execute(new ExactMatchQuery<I>(I.class, "z")));
 	}
 	
 	@Test
-	public void testIndirectSubType() throws ExtensionQueryException {
+	public void testIndirectSubType() {
 		Assert.assertEquals(C.class, store.execute(new ExactMatchQuery<I>(I.class, "a", "b")));
 	}
 	
 	@Test
-	public void testFallback() throws ExtensionQueryException {
+	public void testFallback() {
 		Assert.assertEquals(A.class, store.execute(new ExactMatchQuery<I>(I.class, "x", "y")));
 	}
 	
 	@Test
-	public void testGetMock() throws ExtensionQueryException {
+	public void testGetMock() {
 		Assert.assertEquals(MockD.class, store.execute(new ExactMatchQuery<I>(I.class, "c", "z")));
 	}
 	

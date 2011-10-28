@@ -18,14 +18,14 @@ public class SimplePartialMatchQueryTest extends ExtensionQueryTestBase {
 	}
 	
 	@Test
-	public void testThatExactMatchesAreFavored() throws ExtensionQueryException {
+	public void testThatExactMatchesAreFavored() {
 		Assert.assertEquals(A.class, new SimplePartialMatchQuery<TestExtensionPoint>(TestExtensionPoint.class, "a").execute(map));
 		Assert.assertEquals(B.class, new SimplePartialMatchQuery<TestExtensionPoint>(TestExtensionPoint.class, "a", "b").execute(map));
 		Assert.assertEquals(C.class, new SimplePartialMatchQuery<TestExtensionPoint>(TestExtensionPoint.class, "a", "b", "c").execute(map));
 	}
 	
 	@Test
-	public void testThatTheClosestMatchIsFoundAsLongAsTheyHaveSomethingInCommon() throws ExtensionQueryException {
+	public void testThatTheClosestMatchIsFoundAsLongAsTheyHaveSomethingInCommon() {
 		Assert.assertEquals(A.class, new SimplePartialMatchQuery<TestExtensionPoint>(TestExtensionPoint.class, "a", "z", "G", "9").execute(map));
 		Assert.assertEquals(B.class, new SimplePartialMatchQuery<TestExtensionPoint>(TestExtensionPoint.class, "a", "z", "G", "b").execute(map));
 		Assert.assertEquals(C.class, new SimplePartialMatchQuery<TestExtensionPoint>(TestExtensionPoint.class, "a", "z", "G", "c").execute(map));
@@ -33,7 +33,7 @@ public class SimplePartialMatchQueryTest extends ExtensionQueryTestBase {
 	}
 	
 	@Test
-	public void testThatIfNothingMatchesWeGetTheBaseImplementation() throws ExtensionQueryException {
+	public void testThatIfNothingMatchesWeGetTheBaseImplementation() {
 		map.put(ExtensionKey.DEFAULT_BASE, A.class);
 		Assert.assertEquals(A.class, new SimplePartialMatchQuery<TestExtensionPoint>(TestExtensionPoint.class, "3", "z", "G", "9").execute(map));
 	}

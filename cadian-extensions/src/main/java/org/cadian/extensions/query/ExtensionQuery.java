@@ -18,7 +18,7 @@ public interface ExtensionQuery<T> extends Serializable {
 	 * @param map The Map
 	 * @return The Best Match
 	 */
-	public Class<? extends T> execute(Map<ExtensionKey, Class<? extends T>> map) throws ExtensionQueryException;
+	public Class<? extends T> execute(Map<ExtensionKey, Class<? extends T>> map);
 	
 	/**
 	 * Get the ExtensionPoint.

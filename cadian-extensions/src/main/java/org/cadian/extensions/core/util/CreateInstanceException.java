@@ -5,7 +5,7 @@ package org.cadian.extensions.core.util;
  * 
  * @author Joshua Hornsby
  */
-public class CreateInstanceException extends Exception {
+public class CreateInstanceException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 	private static final String MESSAGE = "An exception occurred while trying to instantiate %s. %s";
 	

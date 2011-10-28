@@ -18,7 +18,7 @@ public class ExactMatchQueryTest extends ExtensionQueryTestBase {
 	}
 	
 	@Test
-	public void testThatAnExactQueryStringMatchSucceeds() throws ExtensionQueryException {
+	public void testThatAnExactQueryStringMatchSucceeds() {
 		Assert.assertEquals(A.class, new ExactMatchQuery<TestExtensionPoint>(TestExtensionPoint.class, "a").execute(map));
 		Assert.assertEquals(B.class, new ExactMatchQuery<TestExtensionPoint>(TestExtensionPoint.class, "a", "b").execute(map));
 		Assert.assertEquals(C.class, new ExactMatchQuery<TestExtensionPoint>(TestExtensionPoint.class, "a", "b", "c").execute(map));
@@ -35,7 +35,7 @@ public class ExactMatchQueryTest extends ExtensionQueryTestBase {
 	}
 	
 	@Test
-	public void testThatWeCanFallBackToABaseImplementation() throws ExtensionQueryException {
+	public void testThatWeCanFallBackToABaseImplementation() {
 		map.put(new ExtensionKey(), A.class); //add a fallback
 		Assert.assertEquals(A.class, new ExactMatchQuery<TestExtensionPoint>(TestExtensionPoint.class, "z").execute(map));
 	}

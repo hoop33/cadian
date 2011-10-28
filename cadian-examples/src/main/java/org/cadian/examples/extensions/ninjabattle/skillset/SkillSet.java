@@ -6,8 +6,6 @@ import org.cadian.examples.extensions.ninjabattle.attack.Attack;
 import org.cadian.examples.extensions.ninjabattle.util.RandomUtil;
 import org.cadian.extensions.annotation.ExtensionPoint;
 import org.cadian.extensions.core.Extensions;
-import org.cadian.extensions.core.util.CreateInstanceException;
-import org.cadian.extensions.query.ExtensionQueryException;
 
 /**
  * A ninja's skill set.
@@ -34,10 +32,8 @@ public abstract class SkillSet {
 	/**
 	 * Get a random attack.
 	 * @return An Attack
-	 * @throws ExtensionQueryException
-	 * @throws CreateInstanceException
 	 */
-	public final Attack getRandomAttack() throws ExtensionQueryException, CreateInstanceException {
+	public final Attack getRandomAttack() {
 		return Extensions.getBestInstanceFor(Attack.class, getSkillDescription(Extensions.getExactInstanceFor(RandomUtil.class).getRandomDouble()));
 	}
 	
