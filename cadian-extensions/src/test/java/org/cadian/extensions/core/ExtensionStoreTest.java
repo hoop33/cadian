@@ -19,6 +19,7 @@ public class ExtensionStoreTest {
 	
 	@Before
 	public void init() {
+		Extensions.injectMocks(true);
 		store = new ExtensionStore<I>(I.class);
 	}
 	

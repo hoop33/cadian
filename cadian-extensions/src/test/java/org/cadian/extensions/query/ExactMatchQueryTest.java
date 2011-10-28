@@ -3,6 +3,7 @@ package org.cadian.extensions.query;
 import junit.framework.Assert;
 
 import org.cadian.extensions.core.ExtensionKey;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -10,7 +11,12 @@ import org.junit.Test;
  * 
  * @author Joshua Hornsby
  */
-public class ExactMatchQueryTest extends ExtensionQueryTest {
+public class ExactMatchQueryTest extends ExtensionQueryTestBase {
+	@Before
+	public void init() {
+		super.init();
+	}
+	
 	@Test
 	public void testThatAnExactQueryStringMatchSucceeds() throws ExtensionQueryException {
 		Assert.assertEquals(A.class, new ExactMatchQuery<TestExtensionPoint>(TestExtensionPoint.class, "a").execute(map));
