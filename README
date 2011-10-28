@@ -31,3 +31,21 @@ Interface to org.reflections classpath scanner.
 
 Examples
 Examples of how to use the Cadian framework.
+
+  NinjaBattle
+  An example showing how cadian-extensions allows you to create and classify multiple hierarchies of extensions.
+
+-------------------------------------------------------------------------------
+Install
+In cadian-reflections
+  $ mvn install
+In cadian-preferences
+  $ mvn install
+In cadian-extensions
+  $ mvn install
+In cadian-examples
+  $ mvn install
+
+Run the NinjaBattle example
+In cadian-examples
+  $ mvn exec:java -Dexec.mainClass="org.cadian.examples.extensions.ninjabattle.NinjaBattle"
