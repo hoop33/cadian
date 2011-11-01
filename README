@@ -39,7 +39,7 @@ Examples of how to use the Cadian framework.
 Install
 In cadian-reflections
   $ mvn install
-In cadian-preferences
+In cadian-properties
   $ mvn install
 In cadian-extensions
   $ mvn install
