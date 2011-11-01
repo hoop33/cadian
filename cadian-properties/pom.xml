@@ -17,7 +17,7 @@
   <dependencies>
     <dependency>
     	<groupId>org.cadian</groupId>
-    	<artifactId>reflections</artifactId>
+    	<artifactId>cadian-reflections</artifactId>
     	<version>1.0.0</version>
     </dependency>
      <dependency>
